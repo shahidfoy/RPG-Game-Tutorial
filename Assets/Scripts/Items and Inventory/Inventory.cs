@@ -6,6 +6,8 @@ public class Inventory : MonoBehaviour
 {
     public static Inventory instance;
 
+    public List<ItemData> startingItems;
+
     public List<InventoryItem> equipment;
     public Dictionary<ItemData_Equipment, InventoryItem> equipmentDictionary;
 
@@ -47,6 +49,15 @@ public class Inventory : MonoBehaviour
         inventoryItemSlot = inventorySlotParent.GetComponentsInChildren<UI_ItemSlot>();
         stashItemSlot = stashSlotParent.GetComponentsInChildren<UI_ItemSlot>();
         equipmentSlot = equipmentSlotParent.GetComponentsInChildren<UI_EquipmentSlot>();
+        AddStartingItems();
+    }
+
+    private void AddStartingItems()
+    {
+        for (int i = 0; i < startingItems.Count; i++)
+        {
+            AddItem(startingItems[i]);
+        }
     }
 
     public void EquipItem(ItemData _item)
@@ -77,7 +88,7 @@ public class Inventory : MonoBehaviour
         UpdateSlotUI();
     }
 
-    private void UnequipItem(ItemData_Equipment itemToRemove)
+    public void UnequipItem(ItemData_Equipment itemToRemove)
     {
         if (equipmentDictionary.TryGetValue(itemToRemove, out InventoryItem value))
         {
@@ -182,5 +193,57 @@ public class Inventory : MonoBehaviour
         }
 
         UpdateSlotUI();
+    }
+
+    public bool CanCraft(ItemData_Equipment _itemToCraft, List<InventoryItem> _requiredMaterials)
+    {
+        List<InventoryItem> materialsToRemove = new List<InventoryItem>();
+
+        for (int i = 0; i < _requiredMaterials.Count; i++)
+        {
+            if (stashDictionary.TryGetValue(_requiredMaterials[i].data, out InventoryItem stashValue))
+            {
+                if (stashValue.stackSize < _requiredMaterials[i].stackSize)
+                {
+                    Debug.Log("not enough materials");
+                    return false;
+                }
+                else
+                {
+                    materialsToRemove.Add(stashValue);
+                }
+            }
+            else
+            {
+                Debug.Log("not enough materials");
+                return false;
+            }
+        }
+
+        for (int i = 0; i < _requiredMaterials.Count; i++)
+        {
+            RemoveItem(materialsToRemove[i].data);
+        }
+
+        AddItem(_itemToCraft);
+        Debug.Log("Here is your item " + _itemToCraft.name);
+
+        return true;
+    }
+
+    public List<InventoryItem> GetEquipmentList() => equipment;
+
+    public List<InventoryItem> GetStashList() => stash;
+
+    public ItemData_Equipment GetEquipment(EquipmentType _type)
+    {
+        ItemData_Equipment equipedItem = null;
+
+        foreach (KeyValuePair<ItemData_Equipment, InventoryItem> item in equipmentDictionary)
+        {
+            if (item.Key.equipmentType == _type)
+                equipedItem = item.Key;
+        }
+        return equipedItem;
     }
 }
