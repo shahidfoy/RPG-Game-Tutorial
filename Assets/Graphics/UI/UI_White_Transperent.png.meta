@@ -117,7 +117,28 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: UIartdeco_PIPO_pack2_white_0
+      name: UI_White_Transperent_0
+      rect:
+        serializedVersion: 2
+        x: 283
+        y: 393
+        width: 182
+        height: 19
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 29, y: 0, z: 29, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f17a453239cfc4341a10847153603a54
+      internalID: -41124133
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_White_Transperent_1
       rect:
         serializedVersion: 2
         x: 239
@@ -131,29 +152,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 60a0ddaf13d9cfb4aa2cfb13579d28c7
-      internalID: 1968567152
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: UIartdeco_PIPO_pack2_white_1
-      rect:
-        serializedVersion: 2
-        x: 283
-        y: 393
-        width: 182
-        height: 19
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 35, y: 0, z: 35, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 418b64acfc3bbc5429e897b8fe67c960
-      internalID: 2145175254
+      spriteID: a00e2208aa1807e4fb3e9e4a9e357a3f
+      internalID: -1756810435
       vertices: []
       indices: 
       edges: []
@@ -169,8 +169,12 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      UIartdeco_PIPO_pack2_white_1: 2145175254
+      UI_White_Transperent_0: -41124133
+      UI_White_Transperent_1: -1756810435
+      UI_White_Transperent_2: -250179068
+      UI_White_Transperent_3: -379175595
       UIartdeco_PIPO_pack2_white_0: 1968567152
+      UIartdeco_PIPO_pack2_white_1: 2145175254
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

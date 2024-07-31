@@ -1,6 +1,25 @@
 using System.Collections;
 using System.Security.Cryptography;
+using Unity.VisualScripting.Antlr3.Runtime.Misc;
 using UnityEngine;
+
+public enum StatType
+{
+    strength,
+    agility,
+    intelegence,
+    vitality,
+    damage,
+    critChance,
+    critPower,
+    health,
+    armor,
+    evasion,
+    magicRes,
+    fireDamage,
+    iceDamage,
+    lightningDamage
+}
 
 public class CharacterStats : MonoBehaviour
 {
@@ -10,7 +29,7 @@ public class CharacterStats : MonoBehaviour
     public Stat strength; // 1 point increase damage by 1 and crit.power by 1%
     public Stat agility; // 1 point increase evasion by 1% and crit.chance by 1%
     public Stat intelligence; // 1 point increase magic damage by 1 and magic resistance by 3
-    public Stat vitality; // 1 point increase health by 3 or 5 points
+    public Stat vitality; // 1 point increase health by 5 points
 
     [Header("Offensive stats")]
     public Stat damage;
@@ -360,4 +379,24 @@ public class CharacterStats : MonoBehaviour
         return maxHealth.GetValue() + vitality.GetValue() * 5;
     }
     #endregion
+
+    public Stat GetStat(StatType _statType)
+    {
+        if (_statType == StatType.strength) return strength;
+        else if (_statType == StatType.agility) return agility;
+        else if (_statType == StatType.intelegence) return intelligence;
+        else if (_statType == StatType.vitality) return vitality;
+        else if (_statType == StatType.damage) return damage;
+        else if (_statType == StatType.critChance) return critChance;
+        else if (_statType == StatType.critPower) return critPower;
+        else if (_statType == StatType.health) return maxHealth;
+        else if (_statType == StatType.armor) return armor;
+        else if (_statType == StatType.evasion) return evasion;
+        else if (_statType == StatType.magicRes) return magicResistance;
+        else if (_statType == StatType.fireDamage) return fireDamage;
+        else if (_statType == StatType.iceDamage) return iceDamage;
+        else if (_statType == StatType.lightningDamage) return lightningDamage;
+
+        return null;
+    }
 }
