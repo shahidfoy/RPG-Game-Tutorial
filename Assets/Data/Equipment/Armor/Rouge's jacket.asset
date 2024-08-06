@@ -20,6 +20,7 @@ MonoBehaviour:
   itemCooldown: 0
   itemEffects:
   - {fileID: 11400000, guid: 719a57b9071496d4481eaae01e13c4e9, type: 2}
+  itemEffectDescription: 'Unique: Increase evsion on each taken hit'
   strength: 0
   agility: 5
   intelligence: 0
