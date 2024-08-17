@@ -94,6 +94,8 @@ public class Sword_Skill_Controller : MonoBehaviour
         // rb.isKinematic = false;
         transform.parent = null;
         isReturning = true;
+
+        // sword.skill.setCooldown;
     }
 
     private void Update()
@@ -110,7 +112,6 @@ public class Sword_Skill_Controller : MonoBehaviour
         }
 
         BounceLogic();
-
         SpinLogic();
     }
 
